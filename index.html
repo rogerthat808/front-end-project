@@ -8,10 +8,11 @@
     <title>Weather App</title>
 </head>
 <body>
-<h1 class="title">Weather App</h1>
+<h1 class="title">Front-End App</h1>
+<!--                                              App for weather                                            -->
 <div class="card">
     <div class="search">
-        <input type="text" placeholder="enter city name" spellcheck="false">
+        <input type="text" placeholder="enter city name..." spellcheck="false">
         <button><img src="images/search.png" alt=""></button>
     </div>
     <div class="error"><p>Invalid city name</p></div>
@@ -23,8 +24,8 @@
             <div class="col">
                 <img src="images/humidity.png">
                 <div>
-                        <p class="humidity">50%</p>                        
-                        <p>Humidity</p>
+                    <p class="humidity">50%</p>                        
+                    <p>Humidity</p>
                 </div>
             </div>
             <div class="col">
@@ -38,19 +39,53 @@
     </div>
 </div>
 
+<!--                                             New app for currency                                        -->
+<div class="currency">
+    <div class="currencyCard">
+        <div class="pesos">
+            <div class="MXN">USD<img src="images/exchange.png" width="15px">MXN</div>
+            <div class="MXN-value">18</div>
+        </div>
+        <div class="money"><img src="images/money.png" width="70px"></div>
+        <div class="canadianDollars">
+            <div class="CAD">USD<img src="images/exchange.png" width="15px" height="15px">CAD</div>
+            <div class="CAD-value">1.5</div>
+        </div>
+    </div>
+</div>
+
+<!--                                                App for Debt                                             -->
+<div class="debt">
+    <div class="USdebt">
+        <div>
+            <div class="debtText">The United States Debt to the Penny:</div>
+            <div class="actualDebt">$$</div>
+        </div>
+    </div>
+</div>
+
+
 
 <script>
+//                                                   weather app
 
+// Variables holding the API key and API URL
 const apiKey = "9799bb5f90cd664baab661c43a89c3b8"
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q="
 
+// Variables for future event listeners
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
+
+// variable for change of icon depending on weaather
 const weatherIcon = document.querySelector('.weather-icon');
 
+// function for weather
 async function checkWeather(city){
+    // requesting data from API
     let response = await fetch(apiUrl + city + `&appid=${apiKey}`);
 
+    // if request was invalid (city does not exist) display invalid city
     if(response.status == 404) {
         document.querySelector('.error').style.display = "block";
         document.querySelector('.weather').style.display = "none";
@@ -58,14 +93,17 @@ async function checkWeather(city){
         document.querySelector('.weather').style.display = "block";
     }
 
+    // data variable with the value of the response of our request
     let data = await response.json();
     console.log(data)
 
+    // changing the text of html elements with new data
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°";
     document.querySelector(".humidity").innerHTML = data.main.humidity + '%';
     document.querySelector(".wind").innerHTML = data.wind.speed + " mph";
 
+    // if statements to change weather icon depending on the weather
     if(data.weather[0].main == 'Clouds') {
             weatherIcon.src = "images/cloudy.png";
     }
@@ -85,21 +123,54 @@ async function checkWeather(city){
             weatherIcon.src = "images/rainy.png";
     }
 
+    // if new city is valid then block css properties
     document.querySelector('.weather').style.display = "block";
     document.querySelector('.error').style.display = "none";
 };
 
 
+// event listeners for click and enter key
 searchBtn.addEventListener("click", ()=> {
     checkWeather(searchBox.value)
 });
-
 searchBox.addEventListener("keypress", (event)=> {
     if(event.key  === "Enter") {
         checkWeather(searchBox.value)
     }
 });
 
+
+//                                                   currency
+
+// API for exchange rates
+const currrency = `https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/rates_of_exchange?fields=country_currency_desc,exchange_rate,record_date&filter=country_currency_desc:in:(Canada-Dollar,Mexico-Peso),record_date:gte:2023-01-01`
+
+async function checkCurrency() {
+    let currResponse = await fetch(currrency);
+    let currData = await currResponse.json();
+
+    document.querySelector('.MXN-value').innerHTML = "$" + Math.round((currData.data[3]['exchange_rate']) * 100) / 100 + " MXN"
+    document.querySelector('.CAD-value').innerHTML = "$" + Math.round((currData.data[0]['exchange_rate']) * 100) / 100 + " CAD"
+}
+checkCurrency()
+
+//                                                     debt
+
+// API for national debt
+const debt = 'https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&format=json&page[number]=1&page[size]=1'
+
+async function checkDebt() {
+    let debtResponse = await fetch(debt);
+    let debtData = await debtResponse.json();
+    console.log(debtData)
+
+    let debtAmount = debtData.data[0]['tot_pub_debt_out_amt'];
+    let formattedDebt = new Intl.NumberFormat().format(debtAmount);
+
+    document.querySelector('.actualDebt').innerHTML = "$" + formattedDebt;
+
+}
+checkDebt()
 
 </script>
 </body>
