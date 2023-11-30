@@ -96,7 +96,7 @@ body {
     margin-right: 10px;
 }
 
-.humidity, .wind {
+.humidity, .windmph {
     font-size: 28px;
     margin-top: -6px;
 }
@@ -234,7 +234,7 @@ h6 {
     animation: wind 7s linear infinite;
 }
 
-.windy {
+.wind {
     width: 100%;
     display: flex;
     align-items: center;
@@ -243,7 +243,7 @@ h6 {
     bottom: -70px;
 }
 
-@keyframes windy {
+@keyframes wind {
     0% {
         transform: translateY(0);
         opacity: 0;
@@ -260,31 +260,31 @@ h6 {
     }
 }
 
-.windy img:nth-child(1){
+.wind img:nth-child(1){
     animation-delay: 2s;
     width: 35px;
 }
-.windy img:nth-child(2){
+.wind img:nth-child(2){
     animation-delay: 7s;
     width: 40px;
 }
-.windy img:nth-child(3){
+.wind img:nth-child(3){
     animation-delay: 3s;
     width: 30px;
 }
-.windy img:nth-child(4){
+.wind img:nth-child(4){
     animation-delay: 6.5s;
     width: 45px;
 }
-.windy img:nth-child(5){
+.wind img:nth-child(5){
     animation-delay: 3s;
     width: 35px;
 }
-.windy img:nth-child(6){
+.wind img:nth-child(6){
     animation-delay: 5s;
     width: 50px;
 }
-.windy img:nth-child(7){
+.wind img:nth-child(7){
     animation-delay: 2s;
     width: 35px;
 }

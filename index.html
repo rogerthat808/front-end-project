@@ -31,7 +31,7 @@
             <div class="col">
                 <img src="images/wind.png">
                 <div>
-                    <p class="wind">15 mph</p>
+                    <p class="windmph">15 mph</p>
                     <p>Wind Speed</p>
                 </div>
             </div>
@@ -63,7 +63,7 @@
         </div>
     </div>
 </div>
-<div class="windy">
+<div class="wind">
     <img src="images/winded.png">
     <img src="images/winded.png">
     <img src="images/winded.png">
@@ -110,7 +110,7 @@ async function checkWeather(city){
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°";
     document.querySelector(".humidity").innerHTML = data.main.humidity + '%';
-    document.querySelector(".wind").innerHTML = data.wind.speed + " mph";
+    document.querySelector(".windmph").innerHTML = data.wind.speed + " mph";
 
     // if statements to change weather icon depending on the weather
     if(data.weather[0].main == 'Clouds') {
