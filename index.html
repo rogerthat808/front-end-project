@@ -63,7 +63,7 @@
         </div>
     </div>
 </div>
-<div class="wind">
+<div class="windy">
     <img src="images/winded.png">
     <img src="images/winded.png">
     <img src="images/winded.png">
@@ -171,7 +171,7 @@ const debt = 'https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2
 async function checkDebt() {
     let debtResponse = await fetch(debt);
     let debtData = await debtResponse.json();
-    console.log(debtData)
+    //console.log(debtData)
 
     let debtAmount = debtData.data[0]['tot_pub_debt_out_amt'];
     let formattedDebt = new Intl.NumberFormat().format(debtAmount);
