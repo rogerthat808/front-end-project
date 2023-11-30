@@ -7,7 +7,7 @@
 
 body { 
     /* background: linear-gradient(90deg, #12062a, #5a3642); */
-    background-image: url(background.png);
+    background-image: url(back.png);
     background-size: cover;
     background-position: center;
     margin: 0; 
@@ -16,9 +16,10 @@ body {
 }
 
 .card {
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.882); 
     width: 90%;
     max-width: 470px;
-    background: linear-gradient(135deg, #37327bc6, #5f863d80);
+    background: linear-gradient(180deg, #37327bc6, #3d828680);
     color: #fff;
     margin: 50px auto 0;
     border-radius: 50px;
@@ -113,19 +114,21 @@ body {
 }
 
 .title {
-    color: #66666a;
+    color: #ffffff;
     text-align: center;
     margin-top: 70px;
+    text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.882); 
 }
 
 /*                                                  Treasury                                                    */
 
 .currencyCard {
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.882); 
     height: 100px;
     width: 300px;
     width: 90%;
     max-width: 470px;
-    background: linear-gradient(135deg, #397b32c6, #86493d80);
+    background: linear-gradient(90deg, #e1b518b7, #3d8655bb);
     margin: 30px auto 0;
     border-radius: 50px;
     padding: 40px 35px;
@@ -184,11 +187,12 @@ body {
 }
 
 .USdebt {
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.882); 
     height: 100px;
     width: 300px;
     width: 90%;
     max-width: 470px;
-    background: linear-gradient(135deg, #1a1a1ac6, #95030380);
+    background: linear-gradient(135deg, #101010f3, #c80707a8);
     margin: 30px auto 0;
     border-radius: 50px;
     padding: 40px 35px;
@@ -214,4 +218,73 @@ body {
     margin-left: 15%;
     background-color: rgba(0, 0, 0, 0.621);
     border-radius: 40px;
+}
+
+h6 {
+    color: #ffffff;
+    text-align: right;
+    margin-top: 540px;
+    margin-right: 20px;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.wind img{
+    width: 60px;
+    animation: wind 7s linear infinite;
+}
+
+.wind {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: -70px;
+}
+
+@keyframes wind {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-80vh);
+        opacity: 0;
+    }
+}
+
+.wind img:nth-child(1){
+    animation-delay: 2s;
+    width: 35px;
+}
+.wind img:nth-child(2){
+    animation-delay: 7s;
+    width: 40px;
+}
+.wind img:nth-child(3){
+    animation-delay: 3s;
+    width: 30px;
+}
+.wind img:nth-child(4){
+    animation-delay: 6.5s;
+    width: 45px;
+}
+.wind img:nth-child(5){
+    animation-delay: 3s;
+    width: 35px;
+}
+.wind img:nth-child(6){
+    animation-delay: 5s;
+    width: 50px;
+}
+.wind img:nth-child(7){
+    animation-delay: 2s;
+    width: 35px;
 }
