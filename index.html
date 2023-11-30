@@ -8,179 +8,195 @@
     <title>Weather App</title>
 </head>
 <body>
-<h1 class="title">Weather & Finance</h1>
+    <div class="nav">
+        <div class="logo"><img src="images/logo.png" width="50px" height="45px"></div>
+        <div class="app">Front-End App</div>
+        <div class="home">Home</div>
+        <div class="about">About</div>
+        <div class="help">Help</div>
+    </div>
+    <h1 class="title">Weather & Finance</h1>
 <!--                                              App for weather                                            -->
-<div class="card">
-    <div class="search">
-        <input type="text" placeholder="enter city name..." spellcheck="false">
-        <button><img src="images/search.png" alt=""></button>
-    </div>
-    <div class="error"><p>Invalid city name</p></div>
-    <div class="weather">
-        <img src="images/rainy.png" class="weather-icon">
-        <h1 class="temp">22°c</h1>
-        <h2 class="city">New York</h2>
-        <div class="details">
-            <div class="col">
-                <img src="images/humidity.png">
-                <div>
-                    <p class="humidity">50%</p>                        
-                    <p>Humidity</p>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="enter city name..." spellcheck="false">
+            <button><img src="images/search.png" alt=""></button>
+        </div>
+        <div class="error"><p>Invalid city name</p></div>
+        <div class="weather">
+            <img src="images/rainy.png" class="weather-icon">
+            <h1 class="temp">22°c</h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png">
+                    <div>
+                        <p class="humidity">50%</p>                        
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png">
+                    <div>
+                        <p class="windmph">15 mph</p>
+                        <p>Wind Speed</p>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <img src="images/wind.png">
-                <div>
-                    <p class="windmph">15 mph</p>
-                    <p>Wind Speed</p>
-                </div>
+        </div>
+    </div>
+
+    <!--                                             New app for currency                                        -->
+    <div class="currency">
+        <div class="currencyCard">
+            <div class="pesos">
+                <div class="MXN">USD<img src="images/exchange.png" width="15px">MXN</div>
+                <div class="MXN-value">18</div>
+            </div>
+            <div class="money"><img src="images/money.png" width="70px"></div>
+            <div class="canadianDollars">
+                <div class="CAD">USD<img src="images/exchange.png" width="15px" height="15px">CAD</div>
+                <div class="CAD-value">1.5</div>
             </div>
         </div>
     </div>
-</div>
 
-<!--                                             New app for currency                                        -->
-<div class="currency">
-    <div class="currencyCard">
-        <div class="pesos">
-            <div class="MXN">USD<img src="images/exchange.png" width="15px">MXN</div>
-            <div class="MXN-value">18</div>
-        </div>
-        <div class="money"><img src="images/money.png" width="70px"></div>
-        <div class="canadianDollars">
-            <div class="CAD">USD<img src="images/exchange.png" width="15px" height="15px">CAD</div>
-            <div class="CAD-value">1.5</div>
+    <!--                                                App for Debt                                             -->
+    <div class="debt">
+        <div class="USdebt">
+            <div>
+                <div class="debtText">The United States Debt to the Penny:</div>
+                <div class="actualDebt">$33,851,851,942,947.65</div>
+            </div>
         </div>
     </div>
-</div>
-
-<!--                                                App for Debt                                             -->
-<div class="debt">
-    <div class="USdebt">
-        <div>
-            <div class="debtText">The United States Debt to the Penny:</div>
-            <div class="actualDebt">$$</div>
-        </div>
+    <div class="wind">
+        <img src="images/winded.png">
+        <img src="images/winded.png">
+        <img src="images/winded.png">
+        <img src="images/winded.png">
+        <img src="images/winded.png">
+        <img src="images/winded.png">
+        <img src="images/winded.png">
     </div>
-</div>
-<div class="wind">
-    <img src="images/winded.png">
-    <img src="images/winded.png">
-    <img src="images/winded.png">
-    <img src="images/winded.png">
-    <img src="images/winded.png">
-    <img src="images/winded.png">
-    <img src="images/winded.png">
-</div>
-<h6>© 2023 Rogelio Cruz</h6>
+    <h6><a href="https://github.com/rogerthat808" target="_blank">© 2023 Rogelio Cruz</a></h6>
 
 
-<script>
-//                                                   weather app
+    <script>
+    //                                                   weather app
 
-// Variables holding the API key and API URL
-const apiKey = "9799bb5f90cd664baab661c43a89c3b8"
-const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q="
+    // Variables holding the API key and API URL
+    const apiKey = "9799bb5f90cd664baab661c43a89c3b8"
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q="
 
-// Variables for future event listeners
-const searchBox = document.querySelector(".search input");
-const searchBtn = document.querySelector(".search button");
+    // Variables for future event listeners
+    const searchBox = document.querySelector(".search input");
+    const searchBtn = document.querySelector(".search button");
 
-// variable for change of icon depending on weaather
-const weatherIcon = document.querySelector('.weather-icon');
+    // variable for change of icon depending on weaather
+    const weatherIcon = document.querySelector('.weather-icon');
 
-// function for weather
-async function checkWeather(city){
-    // requesting data from API
-    let response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+    // function for weather
+    async function checkWeather(city){
+        // requesting data from API
+        let response = await fetch(apiUrl + city + `&appid=${apiKey}`);
 
-    // if request was invalid (city does not exist) display invalid city
-    if(response.status == 404) {
-        document.querySelector('.error').style.display = "block";
-        document.querySelector('.weather').style.display = "none";
-    } else {
+        // if request was invalid (city does not exist) display invalid city
+        if(response.status == 404) {
+            document.querySelector('.error').style.display = "block";
+            document.querySelector('.weather').style.display = "none";
+        } else {
+            document.querySelector('.weather').style.display = "block";
+        }
+
+        // data variable with the value of the response of our request
+        let data = await response.json();
+        console.log(data)
+
+        // changing the text of html elements with new data
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°";
+        document.querySelector(".humidity").innerHTML = data.main.humidity + '%';
+        document.querySelector(".windmph").innerHTML = data.wind.speed + " mph";
+
+        // if statements to change weather icon depending on the weather
+        if(data.weather[0].main == 'Clouds') {
+                weatherIcon.src = "images/cloudy.png";
+        }
+        if(data.weather[0].main == 'Clear') {
+                weatherIcon.src = "images/sunny.png";
+        }
+        if(data.weather[0].main == 'Rain') {
+                weatherIcon.src = "images/rainy.png";
+        }
+        if(data.weather[0].main == 'Drizzle') {
+                weatherIcon.src = "images/rainy.png";
+        }
+        if(data.weather[0].main == 'Mist') {
+                weatherIcon.src = "images/cloudy.png";
+        }
+        if(data.weather[0].main == 'Rain') {
+                weatherIcon.src = "images/rainy.png";
+        }
+
+        // if new city is valid then block css properties
         document.querySelector('.weather').style.display = "block";
-    }
-
-    // data variable with the value of the response of our request
-    let data = await response.json();
-    console.log(data)
-
-    // changing the text of html elements with new data
-    document.querySelector(".city").innerHTML = data.name;
-    document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°";
-    document.querySelector(".humidity").innerHTML = data.main.humidity + '%';
-    document.querySelector(".windmph").innerHTML = data.wind.speed + " mph";
-
-    // if statements to change weather icon depending on the weather
-    if(data.weather[0].main == 'Clouds') {
-            weatherIcon.src = "images/cloudy.png";
-    }
-    if(data.weather[0].main == 'Clear') {
-            weatherIcon.src = "images/sunny.png";
-    }
-    if(data.weather[0].main == 'Rain') {
-            weatherIcon.src = "images/rainy.png";
-    }
-    if(data.weather[0].main == 'Drizzle') {
-            weatherIcon.src = "images/rainy.png";
-    }
-    if(data.weather[0].main == 'Mist') {
-            weatherIcon.src = "images/cloudy.png";
-    }
-    if(data.weather[0].main == 'Rain') {
-            weatherIcon.src = "images/rainy.png";
-    }
-
-    // if new city is valid then block css properties
-    document.querySelector('.weather').style.display = "block";
-    document.querySelector('.error').style.display = "none";
-};
+        document.querySelector('.error').style.display = "none";
+    };
 
 
-// event listeners for click and enter key
-searchBtn.addEventListener("click", ()=> {
-    checkWeather(searchBox.value)
-});
-searchBox.addEventListener("keypress", (event)=> {
-    if(event.key  === "Enter") {
+    // event listeners for click and enter key
+    searchBtn.addEventListener("click", ()=> {
         checkWeather(searchBox.value)
+    });
+    searchBox.addEventListener("keypress", (event)=> {
+        if(event.key  === "Enter") {
+            checkWeather(searchBox.value)
+        }
+    });
+
+
+    //                                                   currency
+
+    // API for exchange rates
+    const currrency = `https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/rates_of_exchange?fields=country_currency_desc,exchange_rate,record_date&filter=country_currency_desc:in:(Canada-Dollar,Mexico-Peso),record_date:gte:2023-01-01`
+
+    async function checkCurrency() {
+        let currResponse = await fetch(currrency);
+        let currData = await currResponse.json();
+
+        document.querySelector('.MXN-value').innerHTML = "$" + Math.round((currData.data[3]['exchange_rate']) * 100) / 100 + " MXN"
+        document.querySelector('.CAD-value').innerHTML = "$" + Math.round((currData.data[0]['exchange_rate']) * 100) / 100 + " CAD"
     }
-});
+    checkCurrency()
+
+    //                                                     debt
+
+    // API for national debt
+    const debt = 'https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&format=json&page[number]=1&page[size]=1'
+
+    async function checkDebt() {
+        let debtResponse = await fetch(debt);
+        let debtData = await debtResponse.json();
+        console.log(debtData)
+        
+        let debtAmount = Number(debtData.data[0]['tot_pub_debt_out_amt']);
+
+        setInterval(() => {
+            debtAmount += 5787.032;
+            let formattedDebt = new Intl.NumberFormat().format(debtAmount);
+            document.querySelector('.actualDebt').innerHTML = "$" + formattedDebt;
+        }, 150);
+    }
+    checkDebt()
+
+    let debtCard = document.querySelector('.USdebt');
+    debtCard.addEventListener('click', function() {
+        window.open("https://www.usdebtclock.org/index.html?taxpayer", '_blank')
+    })
 
 
-//                                                   currency
 
-// API for exchange rates
-const currrency = `https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/rates_of_exchange?fields=country_currency_desc,exchange_rate,record_date&filter=country_currency_desc:in:(Canada-Dollar,Mexico-Peso),record_date:gte:2023-01-01`
-
-async function checkCurrency() {
-    let currResponse = await fetch(currrency);
-    let currData = await currResponse.json();
-
-    document.querySelector('.MXN-value').innerHTML = "$" + Math.round((currData.data[3]['exchange_rate']) * 100) / 100 + " MXN"
-    document.querySelector('.CAD-value').innerHTML = "$" + Math.round((currData.data[0]['exchange_rate']) * 100) / 100 + " CAD"
-}
-checkCurrency()
-
-//                                                     debt
-
-// API for national debt
-const debt = 'https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?sort=-record_date&format=json&page[number]=1&page[size]=1'
-
-async function checkDebt() {
-    let debtResponse = await fetch(debt);
-    let debtData = await debtResponse.json();
-    //console.log(debtData)
-
-    let debtAmount = debtData.data[0]['tot_pub_debt_out_amt'];
-    let formattedDebt = new Intl.NumberFormat().format(debtAmount);
-
-    document.querySelector('.actualDebt').innerHTML = "$" + formattedDebt;
-
-}
-checkDebt()
-
-</script>
+    </script>
 </body>
 </html>
