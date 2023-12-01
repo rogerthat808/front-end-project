@@ -9,11 +9,11 @@
 </head>
 <body>
     <div class="nav">
-        <div class="logo"><img src="images/logo.png" width="50px" height="45px"></div>
+        <div class="logo"><img src="images/monkey-logo.png" width="50px" height="45px"></div>
         <div class="app">Front-End App</div>
-        <div class="home">Home</div>
-        <div class="about">About</div>
-        <div class="help">Help</div>
+        <div class="home"><a href="index.html">Home</a></div>
+        <div class="about"><a href="about.html">About</a></div>
+        <div class="help"><a href="help.html">Help</a></div>
     </div>
     <h1 class="title">Weather & Finance</h1>
 <!--                                              App for weather                                            -->
@@ -139,7 +139,7 @@
                 weatherIcon.src = "images/rainy.png";
         }
 
-        // if new city is valid then block css properties
+        // original look
         document.querySelector('.weather').style.display = "block";
         document.querySelector('.error').style.display = "none";
     };
@@ -197,6 +197,6 @@
 
 
 
-    </script>
+</script>
 </body>
 </html>
